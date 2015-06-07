@@ -8,3 +8,5 @@ http://stackoverflow.com/questions/29047546/how-to-add-plain-javascript-function
 
 ##Reading
 Chapter 5 AngularJS: Up and Running 
+# dd12-3
+/Users/rachelpincus/Downloads/dd12 3
