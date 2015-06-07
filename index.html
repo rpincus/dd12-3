@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="portfolioApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0">
+
+  <title>EYESORES</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script src="app/js/angular.min.js"></script>
+  <script src="app/js/angular-route.min.js"></script>
+  <script src="app/app.js"></script>
+    <script src="app/controllers/portfolioListController.js"></script>
+  <script src="app/controllers/portfolioviewcontroller.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.2/firebase.js"></script>
+  <script src="js/portservice.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="https://code.angularjs.org/1.2.16/angular-sanitize.js" data-semver="1.2.16"></script>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css"></style>
+<!--   // <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script> -->
+
+
+
+
+</head>
+
+<body ng-controller="PortfolioListController">
+    
+
+  <div class="article-form-container">
+        <div class="panel panel-default">
+
+  <form name="add_portfolio_form" ng-submit="addPortfolio(adding_portfolio)" novalidate>
+        <div class="panel-heading">
+          <input class="title" type="text" required placeholder="title" size="30" ng-model="adding_note.label" />
+          <input class="year" type="text" required placeholder="yyyy-mm-dd" size="10" ng-model="adding_note.year" ng-minlength="10" />
+        </div>
+        <div class="panel-body">
+          <input required placeholder="buyer" ng-model="adding_portfolio.buyer"></input>
+          <input class="title" type="text" required placeholder="image url" size="30" ng-model="adding_portfolio.imageurl" />
+            {{adding_portfolio.imageurl}}
+          </div>
+          <button ng-click="addPortfolio(adding_portfolio)" class="btn btn-success">Contribute</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+      <article ng-repeat="portfolio in ctrl.portfolios" class="article-form-container portfolio-item group first panel panel-default" ng-view>
+          <header class="portfolio-info">
+            <table><td>
+      <div class="title">{{portfolio.development}}</div>
+    <span ng-bind="portfolio.seller"> Who Sold It? {{portfolio.seller}}</span>
+    <div> Who Bought It? {{portfolio.buyer}}</div>
+    <div>Year of Sale: {{portfolio.year}}</div>
+      <div id="numbers">Price: $ {{portfolio.revenue}}</div>
+      <div>Proposed height of the tower: {{portfolio.height}} stories</div>
+    </header></td><td>
+    <figure class="img-thumbnail">
+      <img class="ng-cloak" ng-src="{{ note.imageurl }}" alt="{{ note.title }}">
+    </figure></td>
+  </table>
+    </article>
+    </div>
+  </div>
+<!-- 
+  <main class="wrap group">
+    <div ng-view></div>
+  </main> -->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

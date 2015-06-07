@@ -1,0 +1,51 @@
+<div class="content" ng-controller="PortfolioListController">
+
+  <article class="portfolio-item group"  ng-repeat="portfolio in portfolios | filter:searchFor">> 
+<figure class="portfolio-image">
+      <img ng-src="{{ portfolio.imageurl }}" alt="{{ portfolio.title }}">
+    </figure>
+    
+          <div class="title"><span class="title" ng-bind="portfolio.development"></span></div>
+          <figure class="portfolio-image">
+            <img class="ng-cloak" ng-src="{{ portfolio.imageurl }}" alt="{{ portfolio.development }}">
+          </figure>
+          <header class="portfolio-info">
+          <span class="year" ng-bind="portfolio.year"></span>
+         <span class="buyer" ng-bind="portfolio.buyer"></span>
+         <span class="seller" ng-bind="portfolio.seller"></span>
+         <span class="coords" ng-bind="portfolio.coords"></span>
+         <span class="height" ng-bind="portfolio.height"></span>
+        </header>
+  </article>
+
+      <article class="portfolio-item group" style="clear:both">
+        <header class="portfolio-info">
+          <span class="title">Add an Eyesore</span>
+
+
+          <form name="add_portfolio" novalidate> <!-- ng-submit="addPortfolio()" -->
+            <div class="panel-heading">
+              <p class="error" ng-show="message" >{{ message }}</p>
+              <input name="development" type="text" placeholder="development" ng-required="true" ng-model="adding_portfolio.development" / novalidate>
+              <p class="error" ng-show="add_portfolio.development.$invalid && add_portfolio.devleopment.$touched">Must enter a title.</p>
+
+              <input name="buyer" type="text" placeholder="unique buyer" ng-required="true" ng-model="adding_portfolio.buyer" / novalidate>
+              <p class="error" ng-show="add_portfolio.buyer.$invalid && add_portfolio.buyer.$touched">Must enter a name.</p>
+
+              <input type="file" required="true" id="file-upload" ng-click="addImage()" />
+              <input name="year" placeholder="year" ng-required="true" ng-model="adding_portfolio.year" novalidate></input>
+              <div class="panel-body">
+                <input name="coords" placeholder="coords" ng-required="true" ng-model="adding_portfolio.coords" novalidate></input>
+                <input name="height" placeholder="height" ng-required="true" ng-model="adding_portfolio.height" novalidate></input>
+
+                <input name="seller" placeholder="seller" ng-required="true" ng-model="adding_portfolio.seller" novalidate></input>
+                <p class="error" ng-show="add_portfolio.seller.$invalid && add_portfolio.seller.$touched">Must enter a seller.</p>
+
+                <button class="btn btn-success" ng-disabled="add_portfolio.$invalid" type="button" ng-click="addPortfolio(adding_portfolio)">Add Portfolio</button>
+              </div>
+            </div>
+          </form>
+      </article>
+    </div>
+  </div>
+</div>
